@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>New Motivational Message App by Aisan Shaikh</title>
+		<style> 
+			* { font-size: 40px; font-family: Ink Free;color: white;}
+			body { background-color:Pink;}
+			h2 {width:60%; border:groove; border-radius:40px; border-width: 5px;border-color: purple; }
+			h1 {width:70%; border:groove; border-radius:80px; border-width: 5px;}
+		</style>
+	</head>
+	<body>
+		<center>
+			<h1>New Motivational Message</h1>
+		
+			<h2 id="quotes"></h2>
+			<h2 id="author"></h2>
+
+			<script>
+				function gm() {
+					let quote = document.getElementById("quotes");
+					let author = document.getElementById("author");
+
+					let url = "https://quotes-api-self.vercel.app/quote";
+					fetch(url)
+					.then(res => res.json())
+					.then(data => {
+						quote.innerHTML = data.quote;
+						author.innerHTML = data.author;
+					})
+					.catch(err => alert("issue " + err));
+				}
+				gm();
+				setInterval(gm, 5000); // Fetch new quote every 5 seconds
+			</script>
+		</center>
+	</body>
+</html>
